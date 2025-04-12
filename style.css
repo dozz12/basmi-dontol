@@ -74,9 +74,22 @@ canvas {
   color: white;
 }
 
+/* Mobile Header (Made with ❤️ by ThurZ) */
+#mobileHeader {
+  display: none;
+  margin-top: 20px;
+  font-size: 18px;
+  color: #333;
+  font-weight: bold;
+}
+
 @media (max-width: 768px) {
   #mobileControls {
     display: flex;
+  }
+  
+  #mobileHeader {
+    display: block;
   }
 }
 
