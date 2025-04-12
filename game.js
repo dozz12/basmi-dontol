@@ -9,7 +9,7 @@ const imgDenis = new Image();
 imgDenis.src = 'assets/denis.jpg';  // Denis lebih besar
 
 // Game objects
-let adit = { x: 50, y: 180, width: 150, height: 150, hp: 100 };  // Ukuran Adit lebih besar
+let adit = { x: 50, y: 180, width: 200, height: 200, hp: 100 };  // Ukuran Adit lebih besar
 let bullets = [];
 let enemies = [];
 let keys = {};
@@ -19,9 +19,9 @@ let score = 0;
 function spawnEnemy() {
   enemies.push({
     x: canvas.width,
-    y: Math.random() * (canvas.height - 150),
-    width: 150,  // Ukuran Denis lebih besar
-    height: 150, // Ukuran Denis lebih besar
+    y: Math.random() * (canvas.height - 200),  // Menyesuaikan dengan ukuran canvas
+    width: 200,  // Ukuran Denis lebih besar
+    height: 200, // Ukuran Denis lebih besar
     speed: 2 + Math.random() * 2
   });
 }
@@ -57,7 +57,7 @@ function update() {
   if (keys[' '] && (bullets.length === 0 || Date.now() - bullets[bullets.length - 1].time > 300)) {
     bullets.push({
       x: adit.x + adit.width,
-      y: adit.y + 40,
+      y: adit.y + 70,
       width: 10,
       height: 5,
       speed: 7,
@@ -127,7 +127,7 @@ function draw() {
   // Score
   ctx.fillStyle = "black";  
   ctx.font = "16px sans-serif";
-  ctx.fillText("Skor: " + score, 700, 20);
+  ctx.fillText("Skor: " + score, 900, 20);
 }
 
 function gameLoop() {
