@@ -5,6 +5,71 @@
 }
 
 body {
+  background: #fff;
+  color: #333;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+canvas {
+  display: block;
+  margin: 20px auto;
+  border: 3px solid #333;
+  background: #fff;
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+}
+
+#hpBar {
+  width: 300px;
+  height: 20px;
+  background: red;
+  margin: 10px auto;
+  border: 2px solid #333;
+}
+
+#hpFill {
+  height: 100%;
+  background: lime;
+  width: 100%;
+}
+
+#mobileControls {
+  display: none;
+  margin-top: 10px;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.moveButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#mobileControls button {
+  padding: 15px 20px;
+  font-size: 24px;
+  border: none;
+  border-radius: 10px;
+  background: #444;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  #mobileControls {
+    display: flex;
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   background: #fff; /* Background putih */
   color: #333;
   font-family: sans-serif;
