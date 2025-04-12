@@ -5,21 +5,36 @@
   box-sizing: border-box;
 }
 
-/* Style body */
+/* Body */
 body {
   background: #fff;
   color: #333;
   font-family: sans-serif;
   text-align: center;
-  min-height: 100vh;  /* Mengatasi halaman lebih pendek dari ukuran layar */
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
-/* Title Styling */
+/* Global header (atas) */
+#globalHeader {
+  margin-top: 15px;
+  font-size: 18px;
+  color: #555;
+  font-weight: bold;
+}
+
+@media (min-width: 769px) {
+  #globalHeader {
+    font-size: 20px;
+    color: #222;
+  }
+}
+
+/* Judul Game */
 h1 {
-  margin-top: 20px;
+  margin-top: 10px;
   font-size: 36px;
   color: #333;
 }
@@ -29,31 +44,34 @@ h1 {
   width: 300px;
   height: 20px;
   background: red;
-  margin: 10px auto;
+  margin: 15px auto;
   border: 2px solid #333;
+  border-radius: 5px;
+  overflow: hidden;
 }
 
 #hpFill {
   height: 100%;
-  background: lime;
+  background: limegreen;
   width: 100%;
+  transition: width 0.2s ease;
 }
 
-/* Canvas Style */
+/* Canvas */
 canvas {
   display: block;
   margin: 20px auto;
   border: 3px solid #333;
   background: #fff;
   width: 100%;
-  max-width: 1000px; /* Memperbesar ukuran canvas */
+  max-width: 1000px;
   height: auto;
 }
 
 /* Mobile Controls */
 #mobileControls {
   display: none;
-  margin-top: 10px;
+  margin-top: 20px;
   justify-content: center;
   gap: 30px;
   flex-wrap: wrap;
@@ -72,36 +90,38 @@ canvas {
   border-radius: 10px;
   background: #444;
   color: white;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+  cursor: pointer;
 }
 
-/* Mobile Header (Made with ❤️ by ThurZ) */
-#mobileHeader {
-  display: none;
-  margin-top: 20px;
-  font-size: 18px;
-  color: #333;
-  font-weight: bold;
+#mobileControls button:active {
+  transform: scale(0.95);
 }
 
-@media (max-width: 768px) {
-  #mobileControls {
-    display: flex;
-  }
-  
-  #mobileHeader {
-    display: block;
-  }
-}
-
-/* Footer Styling */
+/* Footer */
 footer {
   font-size: 16px;
   color: #333;
   font-family: sans-serif;
   padding: 10px 0;
-  background-color: #f2f2f2; /* Warna latar belakang footer */
-  position: relative;
+  background-color: #f2f2f2;
   width: 100%;
   text-align: center;
-  margin-top: auto;
+  margin-top: 30px;
+  box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  #mobileControls {
+    display: flex;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  #hpBar {
+    width: 80%;
+  }
 }
