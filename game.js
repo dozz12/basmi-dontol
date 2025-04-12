@@ -3,13 +3,13 @@ const ctx = canvas.getContext('2d');
 
 // Load Images
 const imgAdit = new Image();
-imgAdit.src = 'assets/adit.jpg';
+imgAdit.src = 'assets/adit.jpg';  // Adit lebih besar
 
 const imgDenis = new Image();
-imgDenis.src = 'assets/denis.jpg';
+imgDenis.src = 'assets/denis.jpg';  // Denis lebih besar
 
 // Game objects
-let adit = { x: 50, y: 180, width: 50, height: 50, hp: 100 };
+let adit = { x: 50, y: 180, width: 150, height: 150, hp: 100 };  // Ukuran Adit lebih besar
 let bullets = [];
 let enemies = [];
 let keys = {};
@@ -19,9 +19,9 @@ let score = 0;
 function spawnEnemy() {
   enemies.push({
     x: canvas.width,
-    y: Math.random() * (canvas.height - 50),
-    width: 50,
-    height: 50,
+    y: Math.random() * (canvas.height - 150),
+    width: 150,  // Ukuran Denis lebih besar
+    height: 150, // Ukuran Denis lebih besar
     speed: 2 + Math.random() * 2
   });
 }
@@ -42,6 +42,12 @@ document.getElementById('btnDown').addEventListener('touchend', () => keys['Arro
 document.getElementById('btnShoot').addEventListener('touchstart', () => keys[' '] = true);
 document.getElementById('btnShoot').addEventListener('touchend', () => keys[' '] = false);
 
+// Wait for user interaction to start background music
+document.addEventListener('click', function() {
+  const bgMusic = document.getElementById('bgMusic');
+  bgMusic.play();  // Play background music after user click
+});
+
 function update() {
   // Movement
   if (keys['w'] || keys['ArrowUp']) adit.y -= 5;
@@ -51,7 +57,7 @@ function update() {
   if (keys[' '] && (bullets.length === 0 || Date.now() - bullets[bullets.length - 1].time > 300)) {
     bullets.push({
       x: adit.x + adit.width,
-      y: adit.y + 20,
+      y: adit.y + 40,
       width: 10,
       height: 5,
       speed: 7,
@@ -74,6 +80,9 @@ function update() {
         bullets.splice(bi, 1);
         enemies.splice(ei, 1);
         score++;
+        // Mainkan suara Denis terkena tembakan
+        const denisSound = new Audio('assets/denis.mp3');
+        denisSound.play();
       }
     });
   });
@@ -85,6 +94,9 @@ function update() {
       enemies.splice(ei, 1);
       adit.hp -= 10;
       document.getElementById('hpFill').style.width = adit.hp + "%";
+      // Mainkan suara Denis menyerang Adit
+      const denisSound = new Audio('assets/denis.mp3');
+      denisSound.play();
     }
   });
 
@@ -100,20 +112,20 @@ function draw() {
   ctx.fillStyle = "white";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  // Draw Adit
+  // Draw Adit (lebih besar)
   ctx.drawImage(imgAdit, adit.x, adit.y, adit.width, adit.height);
 
   // Draw bullets
   ctx.fillStyle = "yellow";
   bullets.forEach(b => ctx.fillRect(b.x, b.y, b.width, b.height));
 
-  // Draw enemies (Denis)
+  // Draw enemies (Denis, lebih besar)
   enemies.forEach(e => {
     ctx.drawImage(imgDenis, e.x, e.y, e.width, e.height);
   });
 
   // Score
-  ctx.fillStyle = "black";  // Ubah warna tulisan menjadi hitam supaya kelihatan jelas
+  ctx.fillStyle = "black";  
   ctx.font = "16px sans-serif";
   ctx.fillText("Skor: " + score, 700, 20);
 }
