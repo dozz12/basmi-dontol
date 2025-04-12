@@ -81,7 +81,7 @@ function update() {
         enemies.splice(ei, 1);
         score++;
         // Mainkan suara Denis terkena tembakan
-        const denisSound = new Audio('assets/denis.mp3');
+        const denisSound = new Audio('assets/bg-music.mp3');
         denisSound.play();
       }
     });
@@ -95,7 +95,7 @@ function update() {
       adit.hp -= 10;
       document.getElementById('hpFill').style.width = adit.hp + "%";
       // Mainkan suara Denis menyerang Adit
-      const denisSound = new Audio('assets/denis.mp3');
+      const denisSound = new Audio('assets/bg-music.mp3');
       denisSound.play();
     }
   });
