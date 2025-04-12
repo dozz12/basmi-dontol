@@ -3,10 +3,10 @@ const ctx = canvas.getContext('2d');
 
 // Load Images
 const imgAdit = new Image();
-imgAdit.src = 'assets/adit.png';
+imgAdit.src = 'assets/adit.jpg';
 
 const imgDenis = new Image();
-imgDenis.src = 'assets/denis.png';
+imgDenis.src = 'assets/denis.jpg';
 
 // Game objects
 let adit = { x: 50, y: 180, width: 50, height: 50, hp: 100 };
